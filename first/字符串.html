@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//charAt()返回	字符,charCodeAt(),返回 字符编码
+			
+			//可以把字符串看成字符数组[索引]来访问
+//			str.charAt(2)===str[2],索引值大的话返回空串
+			
+			
+//indexOf('子字符'),返回这个子字符串的位置,没有的话返回-1的值,
+//lastIndexOf()		从最后开始计算,avc.asc.fsd 		indexof返回第一个,左侧开始检测,lastindexof返回最后一个,右侧开始检测
+
+
+//字符串截取
+/*
+ 		slice(start,end),不包含end		slice(-5,-2)   length=10	相当于slice(5,8)
+ 		substr(start,len),start,起始位置,len,截取长度,len负数的时候返回空串,
+ 		start负数的时候,传入的负值与字符串长度相加
+ 		
+ 		
+ 		substring(),跟slice完全一样,区别,当参数是负数的时候,参数自动转换成0,如果是substring(2,-5),自动转换成substring(0,2)
+ 		会自动把小的数当做开始,大的数当做结束
+ 		
+ * */
+/*实例1,
+ 	编写js函数,用于获取输入参数的后缀名,如输入abc.txt,返回.txt
+ * */
+	var url = "index.txt";
+	
+	var getFileFormat = (str) => {
+		var last = str.lastIndexOf('.');
+//		return str.slice(last);
+		return str.substring(last);
+	}
+	
+	console.log(getFileFormat(url));
+	//--------------------------------------------------------------------------------------------
+/*	
+ * 	字符串分割
+ * str.split
+ * 字符串分割成字符数组,返回数组
+ * 和join相反
+ * */
+	
+ //--------------------------------------------------------------------------------------------
+ 
+/*str.replace(regexp/substr,replacement)
+ * 
+ * 返回的是新的字符串,不会修改原来的字符串
+ * 
+ * 功能,在字符串中用一些字符替换另一些字符,或替换一个,与正则匹配的子串
+ * 返回string,参数,regexp,必需,规定子字符串要替换的模式的regexp对象.
+ * 
+ * regexp必须,
+ replacement必须,
+ * 
+ * */
+var tel = '010-12483748,400-37587364,008-27485937';
+var newTel = tel.replace(',',' ');
+//只会替换第一个
+console.log(newTel);
+
+//--------------------------------------------------------------------------------------------
+//转换大小写			
+/*str.toUpperCase(),str.tolowerCase()
+ * 不会修改原来的字符串
+* 
+* *
+* 
+*实例,css里面的样式,border-left-color在js里面要写成驼峰形式,
+* 					borderLeftColor
+* 
+ * */
+	function camelback(str){
+		let arr1 = str.split('-');
+//		[border,left,color]
+		for (let i = 1,len = arr1.length;i<len;i++) {
+//			arr1[i] = arr1[i].substr(0,1).toUpperCase().concat(arr1[i].substring(1));
+//			arr1[i] = arr1[i].charAt(0).toUpperCase().concat(arr1[i].substring(1));
+			arr1[i] = arr1[i].charAt(0).toUpperCase()+arr1[i].substring(1);
+		}
+		return arr1.join('');
+	}
+	var cameFormat  = camelback("border-left-color");
+	console.log(cameFormat);
+			
+		var String2 = '慕课网,工程师的黄埔军校';
+		//一个字就占一个索引
+		console.log(String2.substr(-8,9));//11-8 = 3
+		
+		
+		
+		var age = prompt('请输入年龄');
+		console.log(age)
+		
+		</script>
+	</body>
+</html>

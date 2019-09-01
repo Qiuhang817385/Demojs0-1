@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<!--创建数组
+		new Array()	
+		(10),(a,b,c)
+		-->
+		<script>
+			var color = new Array();
+			console.log(color);
+			var nums = new Array(1,2,3,4);
+			console.log(nums)
+			var vegetables = ['banana','Apple','orange']
+			console.log(vegetables)
+			console.log(vegetables.length)
+//			数组的遍历
+			for (let i = 0;i<vegetables.length;i++) {
+				console.log(i)
+			}
+			//数组的栈方法
+			nums.push(11,22,33,44);//返回值是  
+//			添加数组元素之后的长度
+//			unshift	添加到元素的头部
+			console.log(nums)
+			
+			console.log(nums.pop())
+			//---------------------------------------------------------------------------
+//			pop和shift返回的是删除之后的那个值
+//			push和unshift返回的数组的长度
+//---------------------------------------------------------------------------
+//			arr.join(separator)			
+		//把很多标签塞到一个数组里面
+//数组转换成字符串   返回值是一个字符串
+//			let newString = nums.join(',')
+			let newString = nums.join('-')
+			//默认是用逗号隔开
+//			let newString = nums.join()
+			console.log(typeof newString)
+			console.log(newString)
+//---------------------------------------------------------------------------
+//			arr.reverse()反转一个数组
+			var nums2 = new Array(1,2,3,4);
+			nums2.reverse();//返回值是一个新数组
+			console.log(nums2)
+			
+			//字符串反转
+			var str = 'qiuhang';
+			//字符串转成数组		''
+			console.log(str.split('').reverse().join(''))
+//---------------------------------------------------------------------------
+//数组排序		arr.sort(sortBy)
+//说明:这个方法,即便数组里面的每一项都是数值,sort方法比较的也是字符串
+//sort方法可以接收一个比较函数作为参数
+			var fruit = ['ban','app','huoonge'];
+			var nums3 = [3,4,5,6,23,54,12,65,7,8];
+			//sort的时候,每个元素都会转成字符串,toString
+			//降序排列, return 参数2-参数1
+			//升序排列, return 参数1-参数2
+//			nums3.sort(function(a,b){return a<b});
+//			nums3.sort(
+//				function(x,y){
+////				return x-y;
+//				return y-x;
+//			});
+			nums3.sort(
+				(x,y) => {
+//				return x-y;
+				return y-x;
+			});
+			//或者传入sortNumber
+			function sortNumber(a,b){
+				return a-b;
+			}
+			
+			console.log(nums3)
+//---------------------------------------------------------------------------
+		//数组的方法			
+//		arr.concat(arr1,arr2,arr3),返回一个数组
+		var array1=['a','b',1,4,54354],
+			array2=['m',1213,54354],
+			array3;
+			array3 = array1.concat(array2);
+			console.log(array3)
+			
+//---------------------------------------------------------------------------
+//arr.slice(start,end)
+//start必须,如果是负数,则从数组的尾部开始计算,
+//比如-2,数组长度是12,那么就是12-2,从10开始
+
+//从头部:0, 		end可选,没有end的时候,从start到结束,不包含end
+
+
+//完成以下代码段,实现b数组对a数组的拷贝,方法越多越好.(push,slice,concat)
+		var a = [1,'yes',3],b;
+		//1,数组遍历,用push
+		b = new Array();
+		for (var i=0;i<a.length;i++) {
+			b.push(a[i]);
+		}
+		
+		//2. b = [].concat(a);
+
+		//3. b = a.slice(0);			//截取
+		
+		
+		//--------------------------------------------------------------------------------------
+		//splice() 删除,插入,替换
+		
+//		arr.splice(index,count)删除从index开始的0个或者多个元素
+//		返回被删除的元素的 		数组,,比如删除的是,2,3,4   返回2,3,4
+		
+		
+		//arr.splice(index , 0 , item1 , item2 , item3 )
+		//	在指定位置(index的前面起始位置)插入值
+		
+		//arr.splice(index , count , item1,item2,item3)
+		//删除然后添加,就是替换
+		
+		
+		//--------------------------------------------------------------------------------------
+		//arr.indexOf(searchvalue,startIndex)
+//		功能,从数组的开头开始向后查找,
+//		searchvalue必须,要查找的项
+//		startindex,可选,起点的索引位置
+//返回值:number,索引的位置,没有找到的情况下返回-1
+		
+		
+		//arr.lastindexOf(searchvalue,startIndex)
+//		从数组的末尾开始查找
+//ie9+支持这里两个方法
+		//可以写一个方法来模拟实现arr.indexof
+		function ArrayIndexOf(arr,value){
+			for (let i = 0;i<arr.length;i++) {
+				if(arr[i]===value){
+					return i;
+					break;
+				}
+			}
+			return -1;
+		}
+		
+		var ArrayIndexOf2 = (arr,value) => {
+			for (let i = 0;i<arr.length;i++) {
+				if(arr[i]===value){
+					return i;
+					break;
+				}
+			}
+			return -1;
+		}
+		
+		var nums2 = [1,4,5,7,4,6];
+		var mm = ArrayIndexOf2(nums2,42);
+		console.log(mm);
+		
+//		什么时候用==或者是什么时候用===
+//		obj.a ==null 看一个对象的属性是否存在,或者看函数的参数是否存在,
+				
+				
+				
+//总结:			join,数组变成字符串,
+//				push,unshift,返回新数组长度,shift,pop返回被删除的元素
+//				reverse,反转,
+//				sort,排序
+//				concat,slice,截取返回数组
+//				splice(a,b,c)增删替,indexOf(a,b),
+				
+	
+		</script>
+		
+		
+		
+	</body>
+</html>

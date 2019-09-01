@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			
+//			var date = new Date();
+//			console.log(date);
+//			date对象的方法
+/*
+ * 
+ * 
+ 			getFullYear()4位数年份,
+ 			getMohth日中月份,需要加1
+ 			getDate月中天数,
+ 			getday,返回星期,返回值0-6
+ 			getHours,返回小时,
+ 			getminutes,返回分,getseconds,返回秒
+ 			gettime,返回毫秒数
+ 			
+ 			设置
+ 			set表示设置
+ 			
+ * */
+//			var year = date.getFullYear();
+			//一个不错的解决方案
+//			var weeks = ['日','一','二','三','四','五','六'];
+//			var week = date.getDay();
+//			console.log(weeks[week]);
+			
+			//实例,50天之后是星期几
+//			第一种
+			var today = new Date();
+			today.setDate(today.getDate()+50);
+			console.log(today.getDay())
+//			第二种
+			var today2 = new Date();
+			var temp = new Date(today2.getFullYear(),today2.getMonth(),today2.getDate()+51)
+			console.log(temp.getDay())
+			
+		</script>
+	</body>
+</html>
