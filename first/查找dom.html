@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		
+	</head>
+	<body>
+		<ul id="title1">
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+		</ul>
+		<ol>
+			<li>42</li>
+			<li>t5</li>
+			<li>43</li>
+		</ol>
+		<div id="div1" class="divClass">
+			元素
+		</div>
+		<script type="text/javascript">
+			
+			//只取ul下的li
+			var lis2 = document.getElementById("title1").getElementsByTagName("li");
+			console.log(lis2.length);	
+			
+			//lis2 是数组,不能单独设置style
+			
+			for(var i = 0,len = lis2.length;i<len;i++){
+				lis2[i].style.color = '#ff0';
+			}
+			
+			//给元素设置样式
+			//语法,ele.style.styleName  = styleValue
+			
+			//这个ele必须是一个dom对象
+			
+			//功能,设置ele的css样式
+			//styleName需要使用驼峰命名法
+			
+//			var div2 = document.getElementsByClassName('divClass'); 不能通过class来使用
+			var div2 = document.getElementsByClassName('divClass');
+			console.log(typeof div2);
+//			div2.style.color = '#f00';
+//			var div2 =document.getElementsByName('divClass');
+//			var div2 = document.getElementById('div1');
+//			div.style.width = 20px;
+//			div.style.height = 20px;
+//			div.style.backgroundColor
+//			div2.style.color = '#f00';
+			
+			
+			//获取属性值
+//			ele.getAttribute('attribute'),ele是要操作的dom对象
+//			attribute是要操作获取的dom属性
+//			自定义的属性,都建议以data- 开头
+//			p.id,可以通过id直接自取出来,自定义的属性,或者class不能通过这种标签方式取出来
+			//p.getAttribute('data-type')自定义属性,自带的属性没有必要用getattribute
+			
+			//设置属性值,ele.setAttribute('attribute',value)
+//			p.setAttribute('data-color','red')
+			
+			//删除属性 p.removeAttribute('data-color')
+		</script>
+		
+	</body>
+</html>
