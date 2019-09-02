@@ -1,0 +1,18 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    输入字符:
+    <input type="text" id="text" class="text">
+    <script>
+        var text = document.getElementById('text');
+        text.onkeydown=function(event1){
+            console.log(event1.keyCode);
+        }
+    </script>
+</body>
+</html>
