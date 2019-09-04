@@ -10,6 +10,8 @@
 		(10),(a,b,c)
 		-->
 		<script>
+			const {log} = console;
+
 			var color = new Array();
 			console.log(color);
 			var nums = new Array(1,2,3,4);
@@ -170,6 +172,81 @@
 //				splice(a,b,c)增删替,indexOf(a,b),
 				
 	
+
+
+	/* filter方法 */
+		// 数组的map和filter方法,未了解
+
+    // 数组的map方法,filter方法
+    var ages = [23,42,45,65,32,87]
+    function checkAge (age){
+        return age >= 40;
+    }
+    // filter传入的是比较函数
+    // array.filter(function(currentValue,index,arr), thisValue)
+	// array.map   (function(currentValue,index,arr), thisValue)
+    // currentValue	必须。当前元素的值,
+    // index	可选。当前元素的索引值
+    // arr	可选。当前元素属于的数组对象
+    // log(ages.filter( (age) => {age>=40} ));
+    // 如果省略了 thisValue ，"this" 的值为 "undefined"
+    log(ages.filter( checkAge ));
+	/* map方法 */
+	
+	// map() 不会改变原始数组。
+	var numbers1 = [4, 9, 16, 25];
+	log(numbers1.map(Math.sqrt));
+	// [2, 3, 4, 5]
+	function check(num){
+		return num > 9;
+	}
+
+	log(numbers1.map(check))
+	// [false, false, true, true]
+	// json数组
+	// JSON对象可以嵌套对象和数组
+	/* 
+	var ourMusic = [
+  {
+    "artist": "Daft Punk",
+    "title" : "Homework",
+    "release_year": 1997,
+    "formats": [ 
+      "CD", 
+      "Cassette"
+	  ],
+    "gold": true
+  }
+];
+	 */
+	//  接口数据映射
+	/* 作用,把1映射成了男,0映射成了女
+	
+  		把title映射成name
+	 */
+	 var objEct = [{
+		"title" : "Homework",
+		"sex":1,
+		"age":18,
+	 },
+	 {
+		"title" : "WEde",
+		"sex":0,
+		"age":24,
+	 },
+	 ]
+	 let res = objEct.map(persion => {
+		return {
+        name: persion.title,
+		sex: persion.sex === 1? '男':persion.sex === 0?'女':'保密',
+		age: persion.age
+		}
+	 })
+	 log(res);
+	 log(res instanceof Array)
+	 log(objEct instanceof Array)
+	 log(res === objEct)
+
 		</script>
 		
 		
