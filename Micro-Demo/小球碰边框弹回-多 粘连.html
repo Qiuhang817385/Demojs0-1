@@ -1,0 +1,150 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .effect {
+            width: 100%;
+            height: 100%;
+            filter: contrast(10);
+            background: #fff;
+        }
+        .ball{
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            /* background: red; */
+            z-index: 1;
+            filter: blur(5px);
+            /* padding: 10px; */
+        }
+        #btn1{
+            position: relative;
+            left: 0;
+            top: 0;
+        }
+        #btn2{
+            position: absolute;
+            left: 100px;
+            top: 0;
+        }
+        #btn3{
+            position: absolute;
+            left: 200px;
+            top: 0;
+        }
+        #btn4{
+            position: absolute;
+            left: 300px;
+            top: 0;
+        }
+       
+    </style>
+</head>
+<body>
+    <!-- <button id="btn1">1+</button>
+    <button id="btn2">1-</button>
+    <button id="btn3">2+</button>
+    <button id="btn4">2-</button>
+                   -->
+    <div class="effect" id="effect">
+        <div id="ball"></div>
+    </div>
+    <script>
+        var oBall = document.querySelector('#ball'),
+        leftNum = 0,
+        topNum = 0,
+
+        aBall = null,
+        length = 0;
+
+        leftMax = document.documentElement.clientWidth - 80;
+        topMax = document.documentElement.clientHeight - 80;
+        console.log(80);
+        
+        window.onresize = function(){//浏览器窗口的宽高
+            leftMax = document.documentElement.clientWidth - 80;
+            topMax = document.documentElement.clientHeight - 80;
+        }
+        function creatBall(obj,num){   //创建小球
+            for(let i = 0;i<num;i++){
+                var cBall = document.createElement('div');
+                cBall.className = 'ball';
+                ballBg(cBall);
+                cBall.leftNum=cBall.topNum=(i+1)*1; 
+                obj.appendChild(cBall);
+            }
+        }
+        creatBall(oBall,15);    
+        aBall = oBall.children;      //获取oBall里面的所有小球
+        length = aBall.length;
+
+        setInterval(function(){       //aBall[i]
+            for (var i=0;i<length;i++ ){
+                var Left = aBall[i].offsetLeft+aBall[i].leftNum,
+                Top = aBall[i].offsetTop+aBall[i].topNum;
+            if(Left>=leftMax){
+                Left = leftMax;
+                aBall[i].leftNum = -aBall[i].leftNum;
+                ballBg(aBall[i]);
+            }else if(Left<=0){
+                Left = 0;
+                aBall[i].leftNum = -aBall[i].leftNum;
+                ballBg(aBall[i]);
+            };
+            if(Top>=topMax){
+                Top = topMax;
+                aBall[i].topNum = -aBall[i].topNum;
+                ballBg(aBall[i]);
+            }else if(Top<=0){
+                Top = 0;
+                aBall[i].topNum = -aBall[i].topNum;
+                ballBg(aBall[i]);
+            };
+            aBall[i].style.left = Left+'px';
+            aBall[i].style.top = Top+'px';
+            }   
+        },30);
+
+        function ballBg(obj){
+            var r = Math.floor(Math.random()*56+100),
+                g = Math.floor(Math.random()*56+100),
+                b = Math.floor(Math.random()*56+100);
+            // var r = Math.floor(Math.random()*256),
+            //     g = Math.floor(Math.random()*256),
+            //     b = Math.floor(Math.random()*256);
+                obj.style.backgroundColor = `rgba(${r},${g},${b})`;
+        }
+
+        var bat1 = document.getElementById('btn1');
+        var bat2 = document.getElementById('btn2');
+        var bat3 = document.getElementById('btn3');
+        var bat4 = document.getElementById('btn4');
+        var effect = document.getElementById('effect');
+        var i = 1;
+        var j = 1;
+        // bat1.onclick
+        bat1.addEventListener('click',function(){
+            effect.style.filter = `contrast(${i++})`;
+            console.log('i:'+i);
+        },false)
+        bat2.addEventListener('click',function(){
+            effect.style.filter = `contrast(${i--})`;
+            console.log('i:'+i);
+        },false)
+        bat3.addEventListener('click',function(){
+            effect.style.filter = `blur(${j++})`;
+            console.log('j:'+j);
+        },false)
+        bat4.addEventListener('click',function(){
+            effect.style.filter = `blur(${j--})`;
+            console.log('j:'+j);
+        },false)
+    </script>
+</body>
+</html>

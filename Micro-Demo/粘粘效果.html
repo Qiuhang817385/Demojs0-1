@@ -1,0 +1,103 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .effect {
+            width: 100%;
+            height: 100%;
+            padding-top: 50px;
+            filter: contrast(10);
+            background: #fff;
+        }
+
+        .blackball {
+            width: 100px;
+            height: 100px;
+            background: black;
+            border-radius: 50%;
+            padding: 10px;
+            z-index: 1;
+            filter: blur(5px);
+            margin: 0 auto;
+        }
+
+        .redball {
+            width: 50px;
+            height: 50xp;
+            background: red;
+            padding: 10px;
+            filter: blur(5px);
+            z-index: 1;
+            border-radius: 50%;
+
+            position: absolute;
+            left: 50px;
+            top: 70px;
+            animation: rball 6s infinite;
+
+        }
+
+        @keyframes rball {
+
+            0%,
+            100% {
+                left: 35px;
+                width: 60px;
+                height: 60px;
+            }
+
+            4%,
+            54% {
+                width: 60px;
+                height: 60px;
+            }
+
+            10%,
+            60% {
+                width: 50px;
+                height: 70px;
+            }
+
+            20%,
+            70% {
+                width: 60px;
+                height: 60px;
+            }
+
+            34%,
+            90% {
+                width: 70px;
+                height: 50px;
+            }
+
+            41% {
+                width: 60px;
+                height: 60px;
+            }
+
+            50% {
+                left: calc(100% - 95px);
+                width: 60px;
+                height: 60px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- effect相当于调整图层 -->
+    <!-- 
+        对blackball和redball加入模糊的滤镜  使用filter:blur（数值)
+        对effect加入对比的滤镜        对比则使用filter:contrast（数值）
+     -->
+    <div class="effect">
+        <div class="blackball"></div>
+        <div class="redball"></div>
+    </div>
+</body>
+
+</html>
