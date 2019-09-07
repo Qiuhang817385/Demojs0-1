@@ -1,0 +1,84 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        .box1 {
+            width: 300px;
+            height: 300px;
+            margin: 100px;
+            background: #333;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .box2 {
+            width: 200px;
+            height: 200px;
+            margin: 100px;
+            background: #666;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .box3 {
+            width: 100px;
+            height: 100px;
+            margin: 100px;
+            background: #999;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 假如我想获取到box3到浏览器窗口的偏移量，该怎么去获取呢？
+    就是把  元素本身的偏移量  跟所有        上级定位元素的偏移量        都加起来就可以了 -->
+    <div class="box1">
+        <div class="box2">
+            <div class="box3"></div>
+        </div>
+    </div>
+    <script>
+        var oBox1 = document.querySelector('.box1');
+        var oBox2 = document.querySelector('.box2');
+        var oBox3 = document.querySelector('.box3');
+
+        //       offset(oBox1,'top')
+        function offset(obj, direction) {
+            //把top,left首字母大写,拼接成offsetTop,offsetLeft
+            //                拼接成 offset        T                        op
+            let offsetDir = 'offset' + direction[0].toUpperCase() + direction.substring(1);
+            // console.log('qiuhang'.substring(1));//iuhang
+            let realNum = obj[offsetDir];   //oBox1[offsetTop];
+            // console.log(oBox1.offsetTop);//100
+
+            let positionParent = obj.offsetParent;  //获取上一级定位元素对象
+
+            while (positionParent != null) {
+                //当前元素相对当前父元素的偏移量    +   当前元素的父元素    相对    当前元素的父元素    的  父元素的偏移量
+                realNum += positionParent[offsetDir];
+                //再次获取当前的元素的父元素,重复
+                positionParent = positionParent.offsetParent;
+            }
+            return realNum;
+        }
+
+        console.log('box1:'+offset(oBox1,'left')+'   '+offset(oBox1,'top'));
+        console.log('box2:'+offset(oBox2,'left')+'   '+offset(oBox2,'top'));
+        console.log('box3:'+offset(oBox3,'left')+'   '+offset(oBox3,'top'));
+        
+
+
+
+
+    </script>
+</body>
+
+</html>

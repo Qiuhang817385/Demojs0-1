@@ -1,0 +1,90 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .ball{
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: red;
+            left: 0;
+            top: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="ball"></div>
+    <script>
+        var oBall = document.querySelector('#ball'),
+        leftNum = 0,
+        topNum = 0,
+
+        aBall = null,//表明是一个对象
+        length = 0;
+
+        leftMax = document.documentElement.clientWidth - 80;
+        topMax = document.documentElement.clientHeight - 80;
+        console.log(80);
+        
+        window.onresize = function(){//当浏览器窗口发生变化时，实时获取浏览器窗口的宽高
+            leftMax = document.documentElement.clientWidth - 80;
+            topMax = document.documentElement.clientHeight - 80;
+        }
+
+
+
+        function creatBall(obj,num){   //创建小球的function
+            for(let i = 0;i<num;i++){
+                var cBall = document.createElement('div');
+                cBall.className = 'ball';
+                ballBg(cBall);
+                cBall.leftNum=cBall.topNum=(i+1)*1; 
+                obj.appendChild(cBall);
+                //这里去i+1而不取i的原因是，一个小球的i为0，如果不取i+1，
+                // 那么第一个小球会永远在左上角不动并且不停地变颜色
+            }
+        }
+        creatBall(oBall,10);    
+        aBall = oBall.children;      //获取oBall里面的所有小球
+        length = aBall.length;
+
+        setInterval(function(){       //这里注意需要将之前所有对oBall设置的都换成aBall[i]
+            for (var i=0;i<length;i++ ){
+                var Left = aBall[i].offsetLeft+aBall[i].leftNum,
+                Top = aBall[i].offsetTop+aBall[i].topNum;
+            if(Left>=leftMax){
+                Left = leftMax;
+                aBall[i].leftNum = -aBall[i].leftNum;
+                ballBg(aBall[i]);
+            }else if(Left<=0){
+                Left = 0;
+                aBall[i].leftNum = -aBall[i].leftNum;
+                ballBg(aBall[i]);
+            };
+            if(Top>=topMax){
+                Top = topMax;
+                aBall[i].topNum = -aBall[i].topNum;
+                ballBg(aBall[i]);
+            }else if(Top<=0){
+                Top = 0;
+                aBall[i].topNum = -aBall[i].topNum;
+                ballBg(aBall[i]);
+            };
+            aBall[i].style.left = Left+'px';
+            aBall[i].style.top = Top+'px';
+            }   
+        },30);
+
+        function ballBg(obj){
+            var r = Math.floor(Math.random()*256),
+                g = Math.floor(Math.random()*256),
+                b = Math.floor(Math.random()*256);
+                obj.style.backgroundColor = `rgba(${r},${g},${b})`;
+        }
+    </script>
+</body>
+</html>

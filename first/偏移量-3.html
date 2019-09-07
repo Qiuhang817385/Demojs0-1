@@ -1,0 +1,43 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        第三个例子中，box1跟box2都加上了相对定位，
+        这时候，
+        box1的上一级定位元素还是body。
+        box2的上一级定位元素是box1，
+        box3的上一级定位元素变成是box2，
+        所以这时候就出现了。三个div的偏移量都为100；
+     -->
+<style>
+        body { margin:0;  }
+        .box1 { width:300px; height:300px; margin:100px; background:#333; overflow:hidden; position:relative; }
+        .box2 { width:200px; height:200px; margin:100px; background:#666; overflow:hidden; position:relative; }
+        .box3 { width:100px; height:100px; margin:100px; background:#999;}
+    </style>
+    <div class="box1">
+        <div class="box2">
+            <div class="box3"></div>
+        </div>
+    </div>
+    <script>
+        var oBox1 = document.querySelector('.box1');
+        var oBox2 = document.querySelector('.box2');
+        var oBox3 = document.querySelector('.box3');
+        
+        console.log('box1: '+ oBox1.offsetLeft +','+ oBox1.offsetTop);
+        console.log('box2: '+ oBox2.offsetLeft +','+ oBox2.offsetTop);
+        console.log('box3: '+ oBox3.offsetLeft +','+ oBox3.offsetTop);
+    </script>
+    <!-- 
+        通过上面的三个例子不难看出，
+        offsetLeft值跟offsetTop值的获取跟父级元素没关系，
+        而是跟其上一级的定位元素(除position:static;外的所有定位如fixed,relative,absolute)有关系。
+     -->
+</body>
+</html>

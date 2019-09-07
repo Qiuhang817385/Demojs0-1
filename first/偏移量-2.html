@@ -1,0 +1,66 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <section>
+        <style>
+            body {
+                margin: 0;
+            }
+
+            .box1 {
+                width: 300px;
+                height: 300px;
+                margin: 100px;
+                background: #333;
+                overflow: hidden;
+                position: relative;
+            }
+
+            .box2 {
+                width: 200px;
+                height: 200px;
+                margin: 100px;
+                background: #666;
+                overflow: hidden;
+            }
+
+            .box3 {
+                width: 100px;
+                height: 100px;
+                margin: 100px;
+                background: #999;
+            }
+        </style>
+        <article>
+            <div class="box1">
+                <div class="box2">
+                    <div class="box3"></div>
+                </div>
+            </div>
+        </article>
+        <script>
+            var oBox1 = document.querySelector('.box1');
+            var oBox2 = document.querySelector('.box2');
+            var oBox3 = document.querySelector('.box3');
+
+            console.log('box1: ' + oBox1.offsetLeft + ',' + oBox1.offsetTop);
+            console.log('box2: ' + oBox2.offsetLeft + ',' + oBox2.offsetTop);
+            console.log('box3: ' + oBox3.offsetLeft + ',' + oBox3.offsetTop);
+            /*
+            第二个例子中，box1加上了相对定位
+            这时候box2，box3的上一级定位元素不再是body了
+            这时他们获取到的offsetLeft值跟offsetTop值都是相对于box1的偏移量
+            而box1的上一级定位元素还是body，所以他的偏移量还是相对于body的
+             */
+        </script>
+    </section>
+</body>
+
+</html>

@@ -1,0 +1,74 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body* {
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="sec1">
+        <style>
+            .box1 {
+                width: 300px;
+                height: 300px;
+                margin: 100px;
+                background: #333;
+                overflow: hidden;
+            }
+
+            /* 一个很神奇的现象,div2设置完margin之后,父元素也会相对移动
+        
+            原因:块级元素的垂直相邻外边距会合并，解决办法,浮动或者创建bfc
+            块级元素的垂直相邻外边距会合并
+
+            而行内元素实际上不占上下外边距。
+
+            行内元素的的左右外边距不会合并。同样地，浮动元素的外边距也不会合并。允许指定负的外边距值，不过使用时要小心。
+         */
+            .box2 {
+                width: 200px;
+                height: 200px;
+                margin: 100px;
+                background: #666;
+                overflow: hidden;
+            }
+
+            .box3 {
+                width: 100px;
+                height: 100px;
+                /* margin: 100px; */
+                background: #999;
+            }
+        </style>
+        <article>
+
+            <div class="box1">
+                <div class="box2">
+                    <div class="box3"></div>
+                </div>
+            </div>
+        </article>
+        <script>
+            var oBox1 = document.querySelector('.box1');
+            var oBox2 = document.querySelector('.box2');
+            var oBox3 = document.querySelector('.box3');
+
+            console.log('box1: ' + oBox1.offsetLeft + ',' + oBox1.offsetTop);
+            console.log('box2: ' + oBox2.offsetLeft + ',' + oBox2.offsetTop);
+            console.log('box3: ' + oBox3.offsetLeft + ',' + oBox3.offsetTop);
+        </script>
+    </section>
+
+
+
+</body>
+
+</html>
