@@ -1,0 +1,135 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- 这个就没什么实战价值了,目前来看,
+    
+        可以把动画设置成1次,
+        触发以后合在一起
+        然后再消失触发另外的特效
+
+    -->
+    <style>
+        .effect {
+            width: 100%;
+            height: 100%;
+            padding-top: 50px;
+            filter: contrast(10);
+            background: #fff;
+        }
+
+        /* .blackball {
+            width: 80px;
+            height: 80px;
+            background: #00f;
+            padding: 10px;
+            border-radius: 50%;
+            position: absolute;
+            top: 230px;
+            left: 200px;
+            z-index: 2;
+            filter: blur(10px);
+            animation: bball1 6s infinite;
+        } */
+
+        .redball {
+            width: 80px;
+            height: 80px;
+            background: #00f;
+            padding: 10px;
+            border-radius: 50%;
+            position: absolute;
+            top: 230px;
+            left: 240px;
+            z-index: 2;
+            filter: blur(8px);
+            animation: bball2 6s infinite;
+        }
+
+        @keyframes bball1 {
+
+            0%,
+            100% {
+                left: 0;
+                top: 230px;
+                width: 80px;
+                height: 80px;
+            }
+
+            20% {
+                top: 230px;
+                width: 80px;
+                height: 80px;
+            }
+
+            85% {
+                top: 230px;
+                left: 75px;
+                width: 90px;
+                height: 70px;
+            }
+
+            90% {
+                top: 228px;
+                width: 75px;
+                height: 85px;
+            }
+
+            50% {
+                top: 215px;
+                left: 110px;
+                width: 110px;
+                height: 110px;
+            }
+        }
+
+        @keyframes bball2 {
+
+            0%,
+            100% {
+                left: 240px;
+                top: 230px;
+                width: 80px;
+                height: 80px;
+            }
+
+            20% {
+                top: 230px;
+                width: 80px;
+                height: 80px;
+            }
+
+            85% {
+                top: 230px;
+                left: 165px;
+                width: 90px;
+                height: 70px;
+            }
+
+            90% {
+                top: 228px;
+                width: 75px;
+                height: 85px;
+            }
+
+            50% {
+                left: 110px;
+                top: 215px;
+                width: 110px;
+                height: 110px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="effect">
+        <div class="blackball"></div>
+        <div class="redball"></div>
+    </div>
+</body>
+
+</html>
